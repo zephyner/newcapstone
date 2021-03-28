@@ -17,6 +17,8 @@ public class AnimationController : MonoBehaviour
 
     int jumpHash;
     int isGroundedHash;
+
+    int shootingHash;
     
 
     // Start is called before the first frame update
@@ -37,6 +39,8 @@ public class AnimationController : MonoBehaviour
 
         jumpHash = Animator.StringToHash("jump");
         isGroundedHash = Animator.StringToHash("isGrounded");
+
+        shootingHash = Animator.StringToHash("isShooting");
     }
 
     // Update is called once per frame
@@ -54,9 +58,9 @@ public class AnimationController : MonoBehaviour
         bool isRunning_L = anima.GetBool(runningLeftHash);
         bool isRunning_R = anima.GetBool(runningRightHash);
 
-        //
         bool isJumping = anima.GetBool(jumpHash);
         bool grounded = anima.GetBool(isGroundedHash);
+        bool isShooting = anima.GetBool(shootingHash);
 
         //The direction that uses the animation
         bool forwardInput = Input.GetKey("w");
@@ -66,6 +70,8 @@ public class AnimationController : MonoBehaviour
         bool runInput = Input.GetKey("left shift");
 
         bool jumpInput = Input.GetKey("space");
+
+        bool shootInput = Input.GetKey("mouse 0");
 
         
 
@@ -145,8 +151,6 @@ public class AnimationController : MonoBehaviour
         if (!isJumping && jumpInput)
         {
             anima.SetBool("jump", true);
-
-
         }
         else if (isJumping && !jumpInput)
         {
@@ -161,6 +165,16 @@ public class AnimationController : MonoBehaviour
         else if (grounded && !anima.GetBool("isGrounded"))
         {
             anima.SetBool("isGrounded", false);
+        }
+
+        //Checks if the player is shooting
+        if (!isShooting && shootInput)
+        {
+            anima.SetBool("isShooting", true);
+        }
+        else if (isShooting && !shootInput)
+        {
+            anima.SetBool("isShooting", false);
         }
     }
 }

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class AdvanceMovement : MonoBehaviour
 {
-    Test_Controller walkSpeed;
+    PlayerController walkSpeed;
     public float runSpeed = 4f;
 
     // Start is called before the first frame update
     void Start()
     {
-        walkSpeed = GetComponent<Test_Controller>();
+        walkSpeed = GetComponent<PlayerController>();
     }
 
     // Update is called once per frame

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Test_Controller : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     CharacterController controller;
 
