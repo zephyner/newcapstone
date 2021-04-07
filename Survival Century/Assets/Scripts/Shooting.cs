@@ -9,6 +9,8 @@ public class Shooting : MonoBehaviour
     public GameObject firePos;
     public ParticleSystem muzzleFlash;
 
+    public GameObject impactEffect;
+
     //
     void Shoot()
     {
@@ -27,6 +29,10 @@ public class Shooting : MonoBehaviour
             {
                 target.Damage(damage);
             }
+
+            //Used for the impact effect
+            GameObject impactObject = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(impactObject, 2f);
        }
     }
 
