@@ -6,7 +6,7 @@ public class CustomBullet : MonoBehaviour
 {
     public Rigidbody rb;
     public GameObject explosion;
-    public LayerMask theEnemies;
+    public LayerMask theTarget;
 
     //Bounciness of the bullet
     [Range(0f, 1f)]
@@ -48,10 +48,11 @@ public class CustomBullet : MonoBehaviour
     {
         if (explosion != null) Instantiate(explosion, transform.position, Quaternion.identity);
 
-        Collider[] enemies = Physics.OverlapSphere(transform.position, explosionRange, theEnemies);
+        Collider[] enemies = Physics.OverlapSphere(transform.position, explosionRange, theTarget);
         for (int i = 0; i < enemies.Length; i++)
         {
             enemies[i].GetComponent<EnemyController>().TakeDamage(Damage);
+            enemies[i].GetComponent<PlayerController>();
         }
 
         Invoke("Delay", 0.05f);
@@ -67,6 +68,7 @@ public class CustomBullet : MonoBehaviour
         collisions++;
 
         if (collision.collider.CompareTag("Enemy") && explodeOnImpact) Explode();
+        if (collision.collider.CompareTag("Player") && explodeOnImpact) Explode();
     }
 
     private void OnDrawGizmosSelected()

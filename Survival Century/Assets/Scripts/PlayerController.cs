@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     CharacterController controller;
+    public AudioSource jumpSound;
 
     public float speed = 6f;
 
@@ -22,11 +23,13 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        jumpSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
         //We use x and z due to the x moving side to side, and z moving forward and backward
         float x = Input.GetAxisRaw("Horizontal");
         float z = Input.GetAxisRaw("Vertical");
@@ -35,7 +38,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && !jump)
         {
             jump = true;
-
+            jumpSound.Play();
             speedY += jumpSpeed;
         }
         if (jump && speedY < 0)

@@ -8,6 +8,7 @@ public class Gun_Test : MonoBehaviour
     public GameObject bullet;
     public GameObject muzzleFlash;
     public TextMeshProUGUI ammoDisplay;
+    public AudioSource shootingSound;
 
     //Force of the bullets
     public float shotForce;
@@ -45,6 +46,7 @@ public class Gun_Test : MonoBehaviour
         //Checks to see if magazine is full
         bulletsLeft = magazineSize;
         readyToShoot = true;
+        shootingSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -65,7 +67,7 @@ public class Gun_Test : MonoBehaviour
 
         //Reload input
         if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reload) Reload();
-        //Reload automaticallt when shooting with no ammo
+        //Reload automatically when shooting with no ammo
         if (readyToShoot && shooting && !reload && bulletsLeft <= 0) Reload();
 
         //Used for shooting
@@ -73,6 +75,7 @@ public class Gun_Test : MonoBehaviour
         {
             bulletsShot = 0;
             Shoot();
+            shootingSound.Play();
         }
     }
 

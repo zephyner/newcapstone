@@ -650,17 +650,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{A7F4DDB7-DD25-3CA6-DEC3-9336C862661D}</Project>
-      <Name>Assembly-CSharp-firstpass</Name>
-    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{085AB0C3-AE18-46AB-2E6D-2A82D4B25970}</Project>
       <Name>Assembly-CSharp</Name>
-    </ProjectReference>
-    <ProjectReference Include="Assembly-CSharp-Editor-firstpass.csproj">
-      <Project>{E8DE6BC7-3F93-3127-D0E0-B9E0244F05AE}</Project>
-      <Name>Assembly-CSharp-Editor-firstpass</Name>
     </ProjectReference>
     <ProjectReference Include="NavMeshComponentsExamplesEditor.csproj">
       <Project>{8015D52A-0BE0-9CC2-C0B8-D9AFCC0EA8F5}</Project>
